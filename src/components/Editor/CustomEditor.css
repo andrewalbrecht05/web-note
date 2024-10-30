@@ -1,0 +1,66 @@
+.mdxeditor {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mdxeditor-popup-container {
+    z-index: 9999;
+    background-color: #333333;
+    color: #dcdcdc;
+    border: 1px solid #555;
+    border-radius: 6px;
+}
+
+.mdxeditor-toolbar {
+    background-color: #2a2a2a;
+    color: #dcdcdc;
+    border-bottom: 1px solid #444;
+    padding: 8px;
+}
+
+.mdxeditor-toolbar button {
+    color: #dcdcdc;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.mdxeditor-toolbar button:hover {
+    color: #ffffff;
+}
+
+.mdxeditor-root-contenteditable {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    border: 1px solid #444;
+    padding: 8px;
+    min-height: 400px;
+}
+
+.mdxeditor-rich-text-editor,
+.mdxeditor-source-editor {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    padding: 8px;
+    border: 1px solid #444;
+}
+
+.mdxeditor-select-content {
+    background: #333;
+    color: #e0e0e0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #555;
+    border-radius: 4px;
+}
+
+.mdxeditor-select-content:hover {
+    background: #333;
+    color: #e0e0e0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #555;
+    border-radius: 4px;
+}
