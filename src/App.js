@@ -1,11 +1,27 @@
-import React from "react";
+import './App.css';
 
-const App = () =>{
+import React from 'react';
+
+import CreateFolder from './views/CreateFolder/CreateFolder';
+import CreateNote from './views/CreateNote/CreateNote';
+import Login from './views/Login/Login';
+import Main from './views/Main/Main';
+import NotFound from './views/NotFound/NotFound';
+import Register from './views/Register/Register';
+
+const App = () => {
     return (
-        <h1>
-            My React App
-        </h1>
-    )
-}
+        <>
+            <Main/>
+            <CreateNote />
+            <CreateFolder/>
+            <Login/>
+            <Register/>
+            <NotFound/>
+        </>
 
-export default App
+
+    );
+};
+
+export default App;
