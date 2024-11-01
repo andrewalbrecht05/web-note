@@ -4,6 +4,9 @@
     display: flex;
 }
 
+a {
+    text-decoration: none;
+}
 .sidebar {
     background: #181818;
     flex: 0.4;

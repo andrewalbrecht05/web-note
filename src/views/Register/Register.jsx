@@ -1,6 +1,7 @@
 import React from 'react';
 import './Register.css';
 import CustomInput from '../../components/CustomInput/CustomInput';
+import {Link} from "react-router-dom";
 
 function Register() {
     const validateUsername = (value) => {
@@ -39,12 +40,14 @@ function Register() {
                         type="password"
                         validate={validatePassword}
                     />
-                    <button className="register-button" type="submit">Register</button>
+                    <Link to="/">
+                        <button className="register-button" type="submit">Register</button>
+                    </Link>
                 </form>
                 <p>
-                    <a href="/login" className="register-text-link">
+                    <Link to="/login" className="register-text-link">
                         Have an account? Sign in
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

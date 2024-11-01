@@ -3,6 +3,7 @@ import './Main.css';
 import { icons } from '../../constants';
 import NotePreview from '../../components/NotePreview/NotePreview';
 import CustomEditor from '../../components/Editor/CustomEditor';
+import {Link} from "react-router-dom";
 
 const Main = () => {
     const [activeIndex, setActiveIndex] = useState();
@@ -68,14 +69,24 @@ const Main = () => {
         <div className="app">
             <div className="sidebar">
                 <img className="header__logo" src={icons.logo} alt="Logo" />
-                <button className="button__new-note">
-                    <img src={icons.add} alt="Add" />
-                    <p style={{ margin: 0, padding: 0 }}>New note</p>
-                </button>
+                <Link to={'/create-note'}>
+                    <button className="button__new-note">
+                        <img src={icons.add} alt="Add"/>
+                        <p style={{margin: 0, padding: 0}}>New note</p>
+                    </button>
+                </Link>
+                <Link to={'/login'}>
+                    <button className="button__new-note">
+                        <img src={icons.logout} alt="Add"/>
+                        <p style={{margin: 0, padding: 0}}>Logout</p>
+                    </button>
+                </Link>
                 <div className="folders">
                     <div className="folders__header">
                         <p>Folders</p>
-                        <img src={icons.folderAdd} alt="Add folder" />
+                        <Link to={"/create-folder"}>
+                            <img src={icons.folderAdd} alt="Add folder"/>
+                        </Link>
                     </div>
                     <div className="folders__items">
                         {mockFolders.map((folder, index) => (
