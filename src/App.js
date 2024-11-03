@@ -24,12 +24,6 @@ const App = () => {
                 <Route path='/register' element={<Register/>} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
-            {/*<Main/>
-            <CreateNote />
-            <CreateFolder/>
-            <Login/>
-            <Register/>
-            <NotFound/>*/}
         </>
 
 

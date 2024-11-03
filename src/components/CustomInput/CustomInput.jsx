@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import './CustomInput.css';
 
-const CustomInput = ({ placeholder, type, validate }) => {
-    const [value, setValue] = useState('');
+const CustomInput = ({ placeholder, type, validate, value, handleChange, name }) => {
     const [error, setError] = useState('');
 
-    const handleChange = (e) => {
-        const newValue = e.target.value;
-        setValue(newValue);
-        if (validate) {
-            const errorMessage = validate(newValue);
-            setError(errorMessage);
-        }
+    const handleInputChange = (e) => {
+        const { value } = e.target;
+        const errorMsg = validate(value);
+        setError(errorMsg);
+        handleChange(e);
     };
+
     return (
         <div className="custom-input-wrapper">
             <input
@@ -20,7 +18,8 @@ const CustomInput = ({ placeholder, type, validate }) => {
                 placeholder={placeholder}
                 type={type}
                 value={value}
-                onChange={handleChange}
+                name={name}
+                onChange={handleInputChange}
             />
             {error && <span className="error-message">{error}</span>}
         </div>

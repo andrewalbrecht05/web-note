@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Main.css';
 import { icons } from '../../constants';
 import NotePreview from '../../components/NotePreview/NotePreview';
 import CustomEditor from '../../components/Editor/CustomEditor';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {handleUserLogout} from "../../api/authApi";
+import useFetch from "../../hooks/useFetch";
+import {getAllFolders} from "../../api/folderApi";
+import {useAuth} from "../../context/AuthContext";
+import {getNotesInFolder} from "../../api/noteApi";
 
 const Main = () => {
     const [activeIndex, setActiveIndex] = useState();
+    const [currentFolder, setCurrentFolder] = useState();
+    const [notes, setNotes] = useState();
+    const [note, setNote] = useState();
+    const navigate = useNavigate();
+    const {setIsLoggedIn} = useAuth();
+
+    const {data: foldersData, isLoading, refetch: updateFolders} = useFetch(getAllFolders);
+    const {data: notesData } = useFetch(() => {getNotesInFolder(foldersData.data.folders[activeIndex].id).then()});
+
+    if( !foldersData && !notesData ) {
+        return null;
+    }
+
+    console.log(notesData);
+
     const mockNotes = [
         {
             title: 'My Goals for the Next Year',
@@ -45,15 +65,6 @@ const Main = () => {
         },
     ];
 
-    const mockFolders = [
-        { title: 'Personal' },
-        { title: 'Work' },
-        { title: 'Travel' },
-        { title: 'Events' },
-        { title: 'Finances' },
-        { title: 'Shared' },
-    ];
-
     const mockMoreOptions = [
         { title: 'Favorites', icon: icons.favorite },
         { title: 'Trash', icon: icons.trash },
@@ -63,6 +74,7 @@ const Main = () => {
 
     const handleFolderClick = (index) => {
         setActiveIndex(index);
+        setCurrentFolder(foldersData.data.folders[index].name);
     };
 
     return (
@@ -75,12 +87,10 @@ const Main = () => {
                         <p style={{margin: 0, padding: 0}}>New note</p>
                     </button>
                 </Link>
-                <Link to={'/login'}>
-                    <button className="button__new-note">
+                    <button className="button__new-note" onClick={() => {handleUserLogout(navigate, setIsLoggedIn)}}>
                         <img src={icons.logout} alt="Add"/>
                         <p style={{margin: 0, padding: 0}}>Logout</p>
                     </button>
-                </Link>
                 <div className="folders">
                     <div className="folders__header">
                         <p>Folders</p>
@@ -89,7 +99,7 @@ const Main = () => {
                         </Link>
                     </div>
                     <div className="folders__items">
-                        {mockFolders.map((folder, index) => (
+                        {foldersData.data.folders.map((folder, index) => (
                             <div
                                 className={`folders__item ${activeIndex === index ? 'active' : ''}`}
                                 key={index}
@@ -97,7 +107,7 @@ const Main = () => {
                             >
                                 <img src={`${activeIndex === index ? icons.folderActive : icons.folder}`}
                                      alt="folder icon" className="folder_icon" />
-                                <div className="folder_name">{folder.title}</div>
+                                <div className="folder_name">{folder.name}</div>
                             </div>
                         ))}
                     </div>
@@ -120,7 +130,7 @@ const Main = () => {
                 </div>
             </div>
             <div className="side_preview">
-                <p className="personal__text">Personal</p>
+                <p className="personal__text">{currentFolder}</p>
                 <div className="notes-list">
                     {mockNotes.map((note, index) => (
                         <NotePreview
