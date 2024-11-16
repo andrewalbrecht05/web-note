@@ -1,0 +1,26 @@
+.note-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 0 20px;
+    transition: background-color 0.2s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.note-card:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.note-list-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.note-list-date_created {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.note-list-text {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+}

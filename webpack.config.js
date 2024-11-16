@@ -9,13 +9,14 @@ const config = {
     },
     target: 'web',
     devServer: {
-        port: '5000',
+        port: '5001',
         static: {
             directory: path.join(__dirname, 'public')
         },
         open: true,
         hot: true,
         liveReload: true,
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -37,10 +38,18 @@ const config = {
                     },
                 ],
             },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.css'],
         alias: {
             '@app': path.resolve(__dirname, '../src/'),
             '@components': path.resolve(__dirname, '../src/components'),

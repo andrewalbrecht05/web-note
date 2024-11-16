@@ -1,0 +1,16 @@
+* {
+    font-family: 'Source Sans 3', 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+button {
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Source Sans 3', 'Roboto', sans-serif;
+    font-weight: 600;
+}

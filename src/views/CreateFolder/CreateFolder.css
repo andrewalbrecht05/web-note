@@ -1,0 +1,49 @@
+.create-folder {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.create-folder .container {
+    width: 20%;
+    min-width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--input-bg-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.create-folder-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.create-folder-text {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #6EACDA;
+}
+
+.create-folder-button {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.create-folder-button:hover {
+    background-color: var(--hover-bg-color);
+}
